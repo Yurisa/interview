@@ -1,0 +1,68 @@
+## HTML5
+### HTML5的新特性
+- 用于绘画的canvas标签
+- 用于媒介回放的video和audio元素
+- 对本地离线储存的更好支持
+- 新的特殊内容元素：article、footer、header、nav、section等
+- 新的表单控件：calendar、data、time、email、url、search
+- 浏览器的支持：Safari、Chrome、Firefox以及Opera包括IE9 基本支持了HTML5
+### HTML5的新语法
+- <!DOCTYPE>
+   - 定义和用法
+     <!DOCTYPE>声明必须是HTML文档的第一行,位于<html>标签之前。
+   - 不是HTML标签
+     指示web浏览器关于页面使用哪个HTML版本进行编写的指令。
+- 新增结构标签(块状元素) ———— 有意义的div
+  - <article> 标记一篇文章
+  - <header> 标记定义一个页面或一个区域头部
+  - <nav> 标记定义导航链接
+  - <section> 标记定义一个区域
+  - <aside> 标记定义页面内容部分的侧边栏
+  - <hgroup> 标记定义文件中一个区块的相关信息
+  - <figure> 标记定义一组媒体内容以及它们的标题
+  - <figcaption> 标记定义figure元素的标题
+  - <footer> 标记定义一个页面或一个区域的底部
+  - <dialog> 标记定义一个对话框(会话框)类似微信
+- 多媒体标签
+  - <video> 标记定义一个视频
+  - <audio> 标记定义音频内容
+  - <source> 标记定义,媒体资源
+  - <canvas> 标记定义图片
+  - <embed> 标记定义外部的可交互的内容或插件,比如flash
+- Web应用标签
+  - 状态标签
+     - <meter> 状态标签(实时状态显示:如气温、气压)
+     - <progress> 状态标签(任务过程:安装、加载)
+  - 列表标签
+     - <datalist> 为input标记定义一个下拉列表,配合option
+     - <details> 标记定义一个元素的详细内容,配合summary
+  - Menu 
+     - <menu> 命令列表(目前所有主流浏览器都不支持)
+     - <menuitem> menu命令列表标签(目前只有FireFox8.0+支持)
+     - <command> menu标记定义一个命令按钮(只有IE9支持)
+- 其他标签
+  - 注释标签
+    - <ruby> 标记定义注释或音标
+    - <rt> 标记定义对ruby的注释内容文本
+    - <rp> 告诉那些不支持的浏览器如何去显示
+  - <mark> 标记定义有标记的文本(黄色选中状态)
+  - <output> 标记定义一些输出类型,计算表单结果配合oninput事件
+  - <keygen> 标记定义表单里一个生成的键值(加密信息传送)
+  - <time> 标记定义一个日期/时间,目前所有主流浏览器都不支持
+
+- 删除的标签
+  - 纯表现的元素
+    - Basefont、big、center、font、s、strike、tt、u
+  - 对可用性产生负面影响的元素
+    - frame、frameset、noframes
+  - 产生混淆的元素
+    - acronym、applet、isindex、dir
+- 重定义标签(显示不变,只是表达的含义进行了重新定义的标签)
+  - <b> 代表内联文本,通常是粗体,没有传递表示重要的意思
+  - <i> 代表内联文本,通常是斜体,没有传递表示重要的意思
+  - <dd> 可以同details与figure一同使用,定义包含文本,dialog也可用
+  - <dt> 可以同details与figure一同使用,汇总细节,dialog也可用
+  - <hr> 表示主题结束,而不是水平线,虽然显示相同
+  - <menu> 重新定义用户界面的菜单,配合commond或者menuitem使用
+  - <small> 表示小字体,例如打印注释或者法律条款
+  - <strong> 表示重要性而不是强调符号
