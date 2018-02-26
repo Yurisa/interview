@@ -99,8 +99,39 @@ JSON.parse('{"a":10,"b":20}')
 
 ## 原型和原型链
 ### 如何准确判断一个变量是数组类型
+    - 使用instanceof
+
+  ```
+   var arr = []
+   arr instanceof Array //true
+   typeof arr //object, typeof是无法判断的
+  ```
 ### 写一个原型链继承的例子
+    ```
+    function Elem(id){
+      this.elem = document.getElementById(id)
+    }
+    Elem.prototype.html = function(val){
+      var elem = this.elem
+      if(val){
+        elem.innerHTML = val
+        return this //链式操作
+      }else{
+        return elem.innerHTML
+      }
+    }
+    Elem.prototype.on = function(type, fn){
+      var elem = this.elem
+      elem.addEventListener(type, fn)
+    }
+    var div1 = new Elem('div1')
+    console.log(div1.html())
+    ```    
 ### 描述new一个对象的过程
+    - 创建一个新对象
+    - this指向这个新对象
+    - 执行代码,即对this赋值
+    - 返回这个this
 ### zepto(或其他框架)源码中如何使用原型链
 - 构造函数
 ```
