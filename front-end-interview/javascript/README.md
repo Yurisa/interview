@@ -95,3 +95,30 @@ JSON.parse('{"a":10,"b":20}')
     - null
     - undefined
     - false
+
+
+## 原型和原型链
+### 如何准确判断一个变量是数组类型
+### 写一个原型链继承的例子
+### 描述new一个对象的过程
+### zepto(或其他框架)源码中如何使用原型链
+- 构造函数
+```
+function Foo(name, age){
+  this.name = name
+  this.age = age
+  this.class = 'class-1'
+  //return this //默认有这一行
+}
+
+var f= new Foo('张三', 20)
+// var f1 = new Foo('李四'， 22) //创建多个对象
+```
+- 构造函数-扩展
+  - var a = {}其实是var a = new Object()的语法糖
+  - var a = []其实是var a = new Array()的语法糖
+  - function Foo(){...}其实是var Foo = new Function(...)
+  - 使用instanceof判断是否是一个变量的构造函数
+- 原型规则和示例
+- 原型链
+- instanceof
