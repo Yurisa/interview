@@ -189,6 +189,35 @@ var f= new Foo('张三', 20)
   - 函数:变量定义、函数声明、this、arguments
   ** ps:注意函数声明和函数表达式的区别 **
 - this
+  - 作为构造函数执行
+  - 作为对象属性执行
+  - 作为普通函数执行
+  - call apply bind
+```
+var a = {
+  name: 'A',
+  fn: function(){
+    console.log(this.name)
+  }
+}
+a.fn() //this === a
+a.fn.call({name:'B'}) //this === {name: 'B'}
+var fn1 = a.fn
+fn1() //this === window
+```
 - 作用域
+  - ES6新增块级作用域let const
+  - var 不是块级作用域,函数作用域和全局作用域
 - 作用域链
+  ```
+  var a = 100
+  function fn(){
+    var b = 200
+
+    //当前作用域没有定义的变量,即"自由变量"
+    console.log(a)
+    console.log(b)
+  }
+  fn()
+  ```
 - 闭包
