@@ -120,5 +120,29 @@ var f= new Foo('张三', 20)
   - function Foo(){...}其实是var Foo = new Function(...)
   - 使用instanceof判断是否是一个变量的构造函数
 - 原型规则和示例
-- 原型链
+  - 所有引用类型(数组、对象、函数),都具有对象特性,即可自由扩展属性(除了'null')
+  - 所有的引用类型(数组、对象、函数),都有一个__proto__(隐式原型)属性,属性值是一个普通的对象
+  - 所有的函数都有一个prototype属性,属性值也是一个普通对象
+  - 所有的引用类型(数组、对象、函数),__proto__属性指向它的构造函数的"prototype"属性
+  - 当试图得到一个对象的某个属性时,如果这个对象本身没有这个属性,那么会去它的__proto__(即它的构造函数的prototype)中去寻找
+  ```
+  var obj = {}; obj.a = 100;
+  var arr = []; arr.a = 100;
+  function fn(){}
+  fn.a = 100;
+
+  console.log(obj.__proto__)
+  console.log(arr.__proto__) 
+  console.log(fn.__proto__)
+
+  console.log(fn.prototype)
+
+  console.log(obj.__proto__ === Object.prototype)
+  ```
+- 原型链 
 - instanceof
+  - 用于判断引用类型属于哪个构造函数的方法
+    - f instance Foo的判断逻辑是:
+    - f的__proto__一层一层往上,能否对应到Foo.prototype
+    - 再试着判断f instanceof Object
+   
