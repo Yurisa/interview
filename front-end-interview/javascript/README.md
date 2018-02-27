@@ -287,3 +287,110 @@ fn1() //this === window
   }
   F2(f1) //100
   ```
+
+## 异步和单线程
+### 同步和异步的区别是什么？分别举一个同步和异步的例子
+    - 同步会阻塞代码的执行,而异步不会
+    - alert是同步,setTimeout是异步
+### 一个关于setTimeOut的笔试题
+### 前端使用异步的场景有哪些
+    - 定时任务:setTimeout,setInverval
+    - 网络请求:ajax请求,动态<img>加载
+    - 事件绑定
+- 什么是异步(对比同步)
+- 前端使用异步的场景
+  - 定时任务:setTimeout,setInverval
+  - 网络请求:ajax请求,动态<img>加载
+  - 事件绑定
+- 异步和单线程
+
+
+## 其他知识
+### 获取 2017-06-10格式的日期
+    ```
+function formateDate(dt){
+ 	if(!dt){
+ 		dt = new Date()
+ 	}
+ 	var year = dt.getFullYear()
+ 	var month = dt.getMonth() + 1
+ 	var date = dt.getDate()
+ 	var hour = dt.getHours()
+ 	var minute = dt.getMinutes()
+ 	var second = dt.getSeconds()
+ 	if(month < 10){
+ 		month = '0' + month
+ 	}
+ 	if(date < 10){
+ 		date = '0' + date
+ 	}
+ 	if(hour < 10){
+ 		hour = '0' +hour
+ 	}
+ 	if(minute < 10){
+ 		minute = '0' + minute
+ 	}
+ 	if(second < 10){
+ 		second = '0' + second
+ 	}
+ 	return year + '-' + month + '-' + date + ' ' + hour + ':' + minute + ':' + second
+ }
+ var dt = new Date
+ var formateDate = formateDate(dt)
+ console.log(formateDate)
+    ```
+### 获取随机数,要求长度一致的字符串格式
+    ```
+    var random = Math.random()
+    var random = random + '0000000000'
+    var random = random.slice(0, 10)
+    console.log(random)
+    ```
+### 写一个能遍历对象和数组的通用的forEach函数
+    ```
+      function forEach(obj,fn){
+    	var key 
+    	if(obj instanceof Array){
+    		//准确判断是否为数组
+    		obj.forEach(function(item, index){
+    			fn(index, item)
+    		})
+    	}else{
+    		//不是数组就是对象
+    		for(key in obj){
+    			fn(key, obj[key])
+    		}
+    	}
+    }
+    var obj = {
+    	a:1,
+    	b:2,
+    	c:3
+    }
+    forEach(obj, function(key, value){
+    	console.log(key, value)
+    })
+    ```
+- 日期
+  ```
+  Date.now() //获取当前时间的毫秒数
+  var dt = new Date()
+  dt.getTime //获取毫秒数
+  dt.getFullYear() //获取毫秒数
+  dt.getMonth()  //月(0 - 11)
+  dt.getDate //日(0 - 31)
+  dt.getHours() //小时(0 - 23)
+  dt.getMinutes //分钟(0 - 59)
+  dt.getSeconds //秒(0 - 59)
+  ```
+- Math
+  - 获取随机数 Math.random() 
+- 数组API
+  - forEach 遍历所有元素
+  - every 判断所有元素是否都符合条件
+  - some 判断是否至少有一个元素符合条件
+  - sort 排序
+  - map 对元素重新组装,生成新数组
+  - filter 过滤符合条件的元素
+- 对象API
+  - for...in...
