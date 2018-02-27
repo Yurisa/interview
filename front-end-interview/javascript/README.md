@@ -179,10 +179,53 @@ var f= new Foo('张三', 20)
    
 ## 作用域和闭包
 ### 变量提升的概念
+    - 变量定义
+    - 函数声明(注意函数表达式的区别)
 ### 说明this几种不同的使用场景
+     - 作为构造函数执行
+     - 作为对象属性执行
+     - 作为普通函数执行
+     - call apply bind
 ### 创建10个<a>标签,点击时候弹出来对应的序号
+    ```
+    for(var i = 0;i < 10; i++){
+      (function(i){
+      var a = document.createElement('a')
+      a.innerHTML = i + '<br>'
+      a.addEventListener('click', function(event){
+        event.preventDefault()
+        alert(i)
+      })
+      document.body.appendChild(a)
+      })(i)
+    }
+    ```
+    或者使用ES6的let
 ### 如何理解作用域
+    - 自由变量
+    - 作用域链,即自由变量的查找
+    - 闭包的两个场景
 ### 实际开发中闭包的应用
+    - 闭包的实际应用主要用于封装变量,收敛权限
+  ```
+  function isFirstLoad(){
+    var _list = [];
+    return function(id){
+      if(_list.indexOf(id) >= 0 ){
+        return false;
+      }else{
+        _list.push(id);
+        return true;
+      }
+    }
+  }
+
+  //使用
+  var firstLoad = isFirstLoad();
+  firstLoad(10) //true
+  firstLoad(10) //false
+  firstLoad(20) //true
+  ```
 - 执行上下文
   - 范围:一段<script>或者一个函数
   - 全局:变量定义、函数声明
