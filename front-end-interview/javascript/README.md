@@ -221,3 +221,26 @@ fn1() //this === window
   fn()
   ```
 - 闭包
+  ```
+  function F1(){
+      var a= 100
+
+      //返回一个函数(函数作为返回值)
+      return function(){
+        console.log(a)
+      }
+  }
+  //f1 得到一个函数
+  var f1 = F1()
+  var a = 200
+  f1()
+
+  //1.函数作为返回值
+  //2.函数作为参数来传递
+
+  function F2(fn){
+   var a = 300
+   fn()
+  }
+  F2(f1) //100
+  ```
