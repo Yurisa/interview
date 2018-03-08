@@ -1,0 +1,20 @@
+{
+  "name": "webpack-test",
+  "version": "1.0.0",
+  "description": "- 模块化的基本语法\r     - 开发环境配置\r     - 关于JS众多模块化的标准\r ### Class和普通构造函数有何区别\r ### Promise的基本使用和原理\r ### 总结一下ES6其他常用功能",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "webpack": "^3.11.0",
+    "webpack-cli": "^2.0.10"
+  }
+}
