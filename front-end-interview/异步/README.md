@@ -1,6 +1,6 @@
 ## 异步
 ### 什么是单线程,和异步有什么关系
-    - 单线程-只有一个线程,只能做一件事,同一时间只能做一件事情
+    - 单线程-同一时间只能做一件事情,两段JS不能同时执行
     - 原因-避免DOM渲染的冲突
     - 解决方案 异步是一种无奈的解决方案,虽然有很多问题
     - 单线程原因 - 避免DOM渲染冲突
@@ -31,5 +31,13 @@
     - 多个串联
     - Promise.all和Promise.race
     - Promise标准
+      - 状态变化
+        - pending (初始状态)
+        - fulfilled
+        - rejected
 ### 介绍一下async/await和Promise的区别和联系
+    - async/await
+      - then只是将callback拆分了
+      - async/await是最直接的写法
 ### 总结一下当前的JS解决异步的方案
+    
