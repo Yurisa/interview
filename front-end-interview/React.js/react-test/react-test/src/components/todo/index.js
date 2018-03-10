@@ -21,6 +21,7 @@ class Todo extends Component{
         this.setState({
             list:this.state.list.concat(title)
         })
+        // patch(vnode, newvnode)
     }
 }
 
