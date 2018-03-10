@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模拟实现</title>
+</head>
+<body>
+        <div id="app">
+        {{name}} <br>
+        {{price}}
+            
+        </div>
+</body>
+<script>
+    var vm ={}
+    var data = {
+        name:"zhangsan",
+        price:"100"
+    }
+    var key,value
+    for(key in data){
+        (function(key){
+          Object.defineProperty(vm, key, {
+              set:function(newValue){
+                  data[key] = newValue
+              },
+              get:function(){
+                  return data[key]
+              }
+          })
+        })(key)
+    }
+</script>
+</html>

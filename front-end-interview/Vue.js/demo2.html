@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <input v-model="title">
+            <button v-on:click="add">submit</button>
+        </div>
+        <div>
+            <ul>
+                <li v-for="item in list"></li>
+            </ul>
+        </div>
+    </div>
+<script>
+    var data = {
+        title: '',
+        list:[]
+    }
+    
+    var vm = new Vue({
+        el:"#app",
+        data:data,
+        methods:{
+            add:function(){
+
+            }
+        }
+    })
+    /*
+     
+     with(this){return
+         _c('div',
+             {attrs:{"id":"app"}},
+             [
+              _c('div',
+               [_c('input',
+                 {directives:
+                    [{name:"model",rawName:"v-model",
+                      value:(title),
+                      expression:"title"
+                    }],
+                    domProps:{"value":(title)},
+                    on:{"input":function($event){if($event.target.composing)return;title=$event.target.value}}}),
+                _v(" "),
+                _c('button',{on:{"click":add}},[
+                _v("submit")])]),
+                _v(" "),
+                _c('div',
+                [_c('ul',_l((list),function(item){return _c('li')}))])])}"
+     
+     */
+    
+
+
+</script>
+</body>
+</html>

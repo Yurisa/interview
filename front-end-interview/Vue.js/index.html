@@ -4,47 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>snabbdom</title>
+    <title>index</title>
 </head>
 <body>
-    <div id="#container"></div>
-    <script src="https://cdn.bootcss.com/snabbdom/0.7.1/snabbdom.js"></script>
-    <script src="https://cdn.bootcss.com/snabbdom/0.7.1/snabbdom-class.js"></script>
-    <script src="https://cdn.bootcss.com/snabbdom/0.7.1/snabbdom-props.js"></script>
-    <script src="https://cdn.bootcss.com/snabbdom/0.7.1/snabbdom-style.js"></script>
-    <script src="https://cdn.bootcss.com/snabbdom/0.7.1/snabbdom-eventlisteners.js"></script>
-    <script src="https://cdn.bootcss.com/snabbdom/0.7.1/h.js"></script>
-    <script>
-       var patch = window.snabbdom
-
-       //定义patch
-       var patch = snabbdom.init([
-           snabbdom_class,
-           snabbdom_props,
-           snabbdom_style,
-           snabbdom_eventlisteners
-       ])
-
-       //定义h
-       var h = snabbdom.h
-       
-       var container = document.getElementById('#container')
-       //生成vnode
-       var vnode = h('ul#list', {}, [
-           h('li.item', {}, 'Item1'),
-           h('li.item', {}, 'Item2'),
-       ])
-
-       document.addEventListener('click',function(){
-        var newVnode = h('ul#list', {}, [
-           h('li.item', {}, 'Item1'),
-           h('li.item', {}, 'ItemB'),
-           h('li.item', {}, 'Item3'),
-          ])
-       patch(vnode, newVnode)
-       })
-
-       patch(container, vnode)
-    </script>
+    
 </body>
+<script>
+    var obj = {}
+    var _name = 'zhangsan'
+    Object.defineProperty(obj, 'name',{
+        get:function(){
+            console.log("get")
+            return _name
+        },
+        set:function(newvalue){
+            console.log("set")
+            _name = newvalue
+        }
+    })
+
+    obj.name = "hdd"
+</script>
 </html>
