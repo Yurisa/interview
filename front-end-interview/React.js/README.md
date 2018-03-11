@@ -43,4 +43,29 @@
       - 根据props初始化实例,然后执行实例的render函数
       - render函数返回的还是vnode对象
 ### setState的过程
+    - setState的异步
+      - setState为何需要异步
+        - 可能一次执行多次setState
+        - 无法规定、限制用户如何使用setState
+        - 没必要每次setState都重新渲染,考虑性能
+        - 即使是每次重新渲染,用户也看不到中间的效果
+        - 只看到最后的结果即可
+    - vue修改属性也是异步
+    - setState的过程
+      - 每个组件实例,都有renderComponent方法
+      - 执行renderComponent会重新执行实例的render
+      - render函数返回newVnode,然后拿到preVnode
+      - 执行patch(preVnode, newVnode)
 ### 阐述自己对React和Vue的认识
+    - 两者本质区别
+      - vue - 本质是MVVM,由MVC发展而来
+      - React - 本质是前端组件化框架,由后端组件化发展而来
+    - 看模板和组件化的区别
+      - vue -使用模板(最初由angular提出)
+      - React - 使用JSX
+      - 模板语法倾向于React
+      - 模板分离倾向于vue
+      - 组件化更倾向于React
+    - 两者共同点
+      - 都支持组件化
+      - 数据驱动视图

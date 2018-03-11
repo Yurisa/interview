@@ -30,7 +30,9 @@
         data:data,
         methods:{
             add:function(){
-
+                this.title = "456"
+                console.log("title", this.title)
+                this.$nextTick(console.log("title", this.title))
             }
         }
     })
