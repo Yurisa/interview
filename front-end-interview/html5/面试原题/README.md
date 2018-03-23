@@ -37,3 +37,13 @@
     - 便于浏览器保存表单
     - 第三方库可以整体提取值
     - 第三方库可以进行表单验证
+### HTML5 Web客户端五种离线存储方式
+- LocalStorage 
+  - Key-Value的简单键值对存储
+- Cookie
+  - 存储内容有限
+- Indexed Database API
+  - IndexedDB可以存储结构对象,可构建key和index的索引方式查找,目前各浏览器已经逐渐支持IndexDB的存储方式
+- FileSystem API
+  - 相当于操作本地文件
+- Web SQL Database
