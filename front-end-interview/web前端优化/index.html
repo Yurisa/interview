@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //  document.cookie = "username=hello"
+    //  document.cookie = "gender=male"
+    //  console.log(document.cookie)
+//     if(window.localStorage){
+//         localStorage.setItem('name','world')
+//         localStorage.setItem('gender','male')
+//     }
+//    console.log(localStorage.getItem('name'))
+function openDB(name){
+    var request = window.indexedDB.open(name)
+    request.onerror = function(e){
+        console.log('err')
+    }
+    request.onsuccess = function(e){
+        myDB.db = e.target.result
+        console.log(myDB.db.close)
+
+    }
+}
+var myDB = {
+    name:'testDB',
+    version:'1.0.0',
+    db:null
+} 
+
+openDB(myDB)
+
+    </script>
+</body>
+</html>
