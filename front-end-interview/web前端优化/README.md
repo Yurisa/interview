@@ -110,15 +110,28 @@
 ### 缓存
 #### httpheader
 ##### Cache-Control
-      - max-age
+      - max-age ——— 优先级高于expires, 从浏览器缓存读取
       - s-maxage ——— 优先级高于max-age,比如CDN, 对于public相关的缓存设备
       - private
       - public
-      - no-cache ——— 判断当前文件是否在浏览器缓存策略
+      - no-cache ———  告诉浏览器、缓存服务器，不管本地副本是否过期，使用资源副本前，一定要到源服务器进行副本有效性校验。
       - no-store ——— 完全不会使用任何缓存策略
 ##### Expires
      - 缓存过期时间, 用来指定资源到期的时间, 是服务器端的具体的时间点。
      - 告诉浏览器在过期时间前浏览器可以直接从缓存中取数据, 而无需再次请求
+##### Last-Modified/If-Modified-Since
+     - 基于客户端和服务端协商的缓存机制
+     - last-modified ——— response header
+     - if-modified-since ——— request header
+     - 需要与cache-control共同使用 ——— max-age优先级较高
+###### 缺点
+     - 1.某些服务器不能获取精确的修改时间
+     - 2. 文件修改时间改了, 但文件内容却没有更改
+##### Etag/If-None-Match
+     - 文件内容的hash值
+     - etag ——— response header
+     - if-none-match ——— request header
+     - 需要与cache-control共同使用
 ### Vue-SSR
 #### 多层次的优化方案
     - 构建层模板编译
