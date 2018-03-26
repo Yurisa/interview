@@ -1,0 +1,12 @@
+.wrapper {
+  background: #FFFFFF;
+}
+.wrapper .nav {
+  font-size: 12px;
+}
+.wrapper .content {
+  font-size: 14px;
+}
+.wrapper .content:hover {
+  background: red;
+}
