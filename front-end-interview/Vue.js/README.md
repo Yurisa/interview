@@ -55,3 +55,15 @@
     - 被用到的会走get,不被用到的不会走get
     - 未走到get中的属性,set的时候我们也无需关心
     - 避免不必要的重复渲染
+
+### Vue的diff算法
+** diff的实现主要通过两个方法, patchVnode和updateChildren **
+** patchVnode有两个参数, 分别老节点oldVnode, 新节点vnode。 主要分五种情况**
+   - if(oldVnode === vnode), 他们的引用一致, 可以认为没有变化
+   - if(oldVnode.text !== null && vnode.text !== null && oldVnode.text !== vnode.text), 文本节点的比较, 需要修改, 则会调用Node.textContent = vnode.text
+   - if(oldCh && ch && oldCh !== ch), 两个节点都有子节点, 而且它们不一样, 这样我们会调用updateChildren函数比较子节点, 这是diff的核心。
+   - if(ch), 只有新节点有子节点, 调用createEle(vnode), vnode.el已经引用了老的dom节点, createEle函数会在老dom节点上添加子节点。
+   - if(oldCh), 新节点没有子节点, 老节点有子节点, 直接删除老节点。
+** updateChildren是关键, 这个过程可以概括如下 **
+![updateChildren icon](/updateChildren.png)
+oldCh 和 newCh各有两个头尾的变量StartIdx和EndIdx, 它们的2个变量相互比较, 一共有四种比较方式。如果4种比较都没匹配, 如果设置了key, 就会用key进行比较, 在比较的过程中, 变量会往中间靠, 一旦StartIdx > EndIdx表明oldCh和newCh至少有一个已经遍历完了, 就会结束比较。
