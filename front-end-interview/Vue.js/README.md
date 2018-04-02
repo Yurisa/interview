@@ -65,5 +65,5 @@
    - if(ch), 只有新节点有子节点, 调用createEle(vnode), vnode.el已经引用了老的dom节点, createEle函数会在老dom节点上添加子节点。
    - if(oldCh), 新节点没有子节点, 老节点有子节点, 直接删除老节点。
 ** updateChildren是关键, 这个过程可以概括如下 **
-![updateChildren icon](/updateChildren.png)
+![updateChildren icon](./updateChildren.png)
 oldCh 和 newCh各有两个头尾的变量StartIdx和EndIdx, 它们的2个变量相互比较, 一共有四种比较方式。如果4种比较都没匹配, 如果设置了key, 就会用key进行比较, 在比较的过程中, 变量会往中间靠, 一旦StartIdx > EndIdx表明oldCh和newCh至少有一个已经遍历完了, 就会结束比较。
