@@ -37,3 +37,12 @@
 #netstat -nap | grep SYN_RECV
 ```
 #### 四次挥手过程详解
+##### 四次挥手(Four-Way Wavehand)即终止TCP连接, 就是指断开一个TCP连接时, 需要客户端和服务端总共发送4个包以确认连接的断开。在socket编程中, 这一过程由客户端或服务端任一方执行close来触发。由于TCP连接时全双工, 因此, 每个方向都必须要单独进行关闭, 这一原则是当一方完成数据发送任务后, 发送一个FIN来终止这一方向的连接, 收到一个FIN只是意味着这个方向上没有数据流动了, 但在这个TCP连接上仍然能够发送数据, 直到这一方向也发送了FIN。首先进行关闭的一方将执行主动关闭, 而另一方则执行被动关闭。
+    - 第一次挥手:
+    Client发送一个FIN, 用来关闭Client到Server的数据传送, Client进入FIN_WAIT_1状态。
+    - 第二次挥手:
+    Server收到FIN后, 发送一个ACK给Client, 确认序号为收到序号+1(与SYN相同, 一个FIN占用一个序号), Server进入CLOSE_WAIT状态。
+    - 第三次挥手:
+    Server发送一个FIN, 用来关闭Server到Client的数据传送, Server进入LAST_ACK状态。
+    - 第四次挥手:
+    Client收到FIN后, Client进入TIME_WAIT状态, 接着发送一个ACK给Server, 确认序号为收到序号+1, SERVER进入CLOSED状态, 完成四次挥手。
