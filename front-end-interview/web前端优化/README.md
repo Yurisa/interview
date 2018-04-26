@@ -137,3 +137,65 @@
     - 构建层模板编译
     - 数据无关的prerender
     - 服务端渲染
+### documentFragment和requestAnimationFrame
+#### 我们经常用setInterval来实现动画，其实这种做法不是太好，因为不同浏览器的刷新频率也不一样（一般认为设置16为最佳,按每秒60帧算，1000/60≈16.67）
+```
+var dis = 0,timer = 0;
+clearInterval(timer);
+timer = setInterval(function(){
+   div.style.left = ++dis;
+　　if(dis>=50) clearInterval(timer)
+},16)
+```
+#### 实现js动画最好的是requestAnimationFrame:
+#### requestAnimationFrame 比起 setTimeout、setInterval的优势主要有两点：
+- 1、requestAnimationFrame 会把每一帧中的所有DOM操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+- 2、在隐藏或不可见的元素中，requestAnimationFrame将不会进行重绘或回流，这当然就意味着更少的的cpu，gpu和内存使用量。
+####一次性加载几万条数据，要求不卡住界面
+
+```
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul>控件</ul>
+  <script>
+    setTimeout(() => {
+      // 插入十万条数据
+      const total = 100000
+      // 一次插入 20 条，如果觉得性能不好就减少
+      const once = 20
+      // 渲染数据总共需要几次
+      const loopCount = total / once
+      let countOfRender = 0
+      let ul = document.querySelector("ul");
+      function add() {
+        // 优化性能，插入不会造成回流
+        const fragment = document.createDocumentFragment();
+        for (let i = 0; i < once; i++) {
+          const li = document.createElement("li");
+          li.innerText = Math.floor(Math.random() * total);
+          fragment.appendChild(li);
+        }
+        ul.appendChild(fragment);
+        countOfRender += 1;
+        loop();
+      }
+      function loop() {
+        if (countOfRender < loopCount) {
+          window.requestAnimationFrame(add);
+        }
+      }
+      loop();
+    }, 0);
+  </script>
+</body>
+</html>
+
+```
