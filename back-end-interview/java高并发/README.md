@@ -6,7 +6,7 @@
 #### 并发: 多个线程操作相同的资源, 保证线程安全, 合理使用资源
 #### 高并发: 服务能同时处理很多请求, 提高程序性能 
 ### CPU多级缓存
-![cache icon](/images/4.jpg)
+![cache icon](./images/4.jpg)
 #### 为什么CPU需要cache
      - CPU的频率太快了, 快到主存跟不上, 这样在处理器时钟周期内, CPU常常需要等待主存, 浪费资源。所以cache的出现是为了缓解CPU和内存之间速度不匹配问题(结构:cpu -> cache -> memory)
 #### CPU cache有什么意义
@@ -22,14 +22,14 @@
      - 处理器为提高运算速度而做出违背原有顺序的优化
 ### java内存模型(Java Memory Model, JMM)
     - java内存模型是一种规范, 它规定了java虚拟机和计算机是如何协同工作的, 它规定了一个线程如何和何时可以看到由其他线程修改过后的变量的值以及在必须时如何同步地访问共享变量。
-![JMM1 icon](/images/5.jpg)
-![JMM2 icon](/images/6.jpg)
-![JMM3 icon](/images/7.jpg)
+![JMM1 icon](./images/5.jpg)
+![JMM2 icon](./images/6.jpg)
+![JMM3 icon](./images/7.jpg)
 #### java内存模型抽象结构图
-![JMM4 icon](/images/8.jpg)
+![JMM4 icon](./images/8.jpg)
 #### 同步八种操作
      - lock
-![lock icon](/images/9.jpg)
+![lock icon](./images/9.jpg)
 ### 并发的优势与风险
 ![youshilieshi icon](./images/10.jpg)
     
