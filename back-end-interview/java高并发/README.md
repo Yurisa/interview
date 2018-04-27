@@ -31,5 +31,5 @@
      - lock
 ![lock icon](/images/9.jpg)
 ### 并发的优势与风险
-![youshilieshi icon](/images/10.jpg)
+![youshilieshi icon](./images/10.jpg)
     
