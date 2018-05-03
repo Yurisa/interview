@@ -84,3 +84,54 @@
 - 线程中断规则:对线程interrupt()方法的调用先行发生于被中断线程的代码检测到中断事件的发生
 - 线程终结规则: 线程中所有的操作都先行发生于线程的终止检测, 我们可以通过Thread.join方法结束、Thread.isAlive()返回值手段检测到线程已经终止执行
 - 对象终结规则:一个对象的初始化完成先行发生于他的finalize()方法的开始
+
+### 发布对象
+- 发布对象:使一个对象能够被当前范围之外的代码所使用
+- 对象逸出:一种错误的发布。当一个对象还没有构造完成时, 就使它被其他线程所见
+
+### 安全发布对象
+- 在静态初始化函数中初始化一个对象的引用
+- 将对象的引用保存到volatile类型域或者AtomicReference对象中
+- 将对象的引用保存到某个正确够早对象的final类型域中
+- 将对象的引用保存到一个由锁保护的域中
+
+### 不可变对象
+- 不可变对象需要满足的条件
+  - 对象创建以后其状态就不能修改
+  - 对象所有域都是final类型
+  - 对象是正确创建的(在对象创建期间, this引用没有逸出)
+### final关键字
+- final关键字:类、方法、变量
+  - 修饰类:不能被继承
+  - 修饰方法:1.锁定方法不被继承类修改2.效率
+  - 修饰变量:基本数据类型变量、引用类型变量
+### 其他不可变
+- Collections.ummodifiableXXX:Collection、List、Set、Map...
+- Guava:ImmutableXXX:Collection、List、Set、Map...
+
+### 线程封闭
+- Ad-hoc 线程封闭:程序控制实现, 最糟糕, 忽略
+- 堆栈封闭: 局部变量, 无并发问题
+- ThreadLocal 线程封闭:特别好的封闭方法
+
+### 线程不安全类与写法
+- StringBuilder不安全 -> StringBuffer安全
+- SimpleDateFormate不安全 -> JodaTime
+- ArrayList, HashSet, HashMap等Collections
+- 先检查再执行:if(condition(a)){handle(a)}
+
+### 同步容器
+- 不安全 -> 安全
+- ArrayList -> Vector,Stack
+- HashMap -> HashTable(key、value不能为null)
+- Collections.synchronizedXXX(List、 Set、 Map)
+
+### 并发容器J.U.C java.util.concurrent
+#### 分为 tool、locks、atomic、collections、executors
+- ArrayList -> CopyOnWriteArrayList
+- HashSet、TreeSet -> CopyOnWriteArraySet 、ConcurrentSkipListSet
+- HashMap、TreeMap -> ConcurrentHashMap ConcurrentHashMap、 ConcurrentSkipListMap
+
+### 安全共享对象策略总结
+- 线程限制:一个呗线程限制的对象, 由线程独占, 并且只能被占有它的线程修改
+- 共享只读:一个共享只读的对象, 在没有额外同步的情况下, 可以被多个线程并发访问, 但是任何线程都不能修改它。
