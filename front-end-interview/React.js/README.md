@@ -74,3 +74,9 @@
       - 初始化周期
       - 组件更新渲染生命周期
       - 组件卸载声明周期
+
+### Fiber架构
+#### requestIdleCallback
+```
+var handle = window.requestIdleCallback(callback[, options])
+```
