@@ -4,7 +4,19 @@
     - http属于OSI网络七层协议模型的"最上层":应用层。由请求和响应构成,是一个标准的客户端服务器模型。http是一个无状态的协议。
     - http默认端口号为80。它可以承载在TLS和SSL之上, 通过加密、认证的方式实现数据传输的安全,成为https, https默认端口号为443。
     - 早期http用于传输网页html文件, 发展到现在, 应用变得广泛, 客户端软件(PC, Android, ios等)大部分通过http传输。
-
+### URI、URL、URN
+#### URI
+     - Uniform Resource Identifier/统一资源标识符
+     - 用来唯一标识互联网上的信息资源
+     - 包括URL和URN
+#### URL
+     - Uniform Resource Locator/统一资源定位器
+     - http://user:pass@host.com:80/path?query=string#hash
+     - 此类格式的都叫做URL，比如ftp协议
+### URN
+    - 永久统一资源定位符
+    - 在资源移动之后还能被找到
+    - 目前还没有非常成熟的使用方案
 ### 通信过程
     - 首先, 客户端发起一个与服务器的TCP连接, 建立连接之后, 客户端A中的浏览器进程可以通过Socket访问该TCP连接。
     - 客户端A进程通过该TCP连接向服务端B发送一个http请求报文(ASCII码), 报文中包含(以百度首页为例)
