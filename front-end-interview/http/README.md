@@ -13,10 +13,38 @@
      - Uniform Resource Locator/统一资源定位器
      - http://user:pass@host.com:80/path?query=string#hash
      - 此类格式的都叫做URL，比如ftp协议
-### URN
+##### URN
     - 永久统一资源定位符
     - 在资源移动之后还能被找到
     - 目前还没有非常成熟的使用方案
+### cache-control
+    - 可缓存性
+      - public
+        - 任何地方包括客户端和服务端
+      - private
+        - 只有发起请求的客户端
+      - no-cache
+        - 无缓存
+    - 到期
+      - max-age=<seconds>    
+      - s-maxage=<seconds>(代理服务器)
+      - max-stale=<seconds>
+        - 发起请求这一方带的，缓存过期还是会使用缓存
+    - 重新验证
+      - must-revalidate
+        - 必须重新向原服务器请求
+      - proxy-revalidate
+        - 代理服务器缓存过期时必须从原服务请求
+    - no-store
+      - 本地和服务器不能存储缓存
+    - no-transform
+      - 不允许改动返回内容
+### CSP Content-Security-Policy
+    - 作用
+      - 限制资源获取
+      - 报告资源获取越权
+    - 限制方式
+      - default-src
 ### 通信过程
     - 首先, 客户端发起一个与服务器的TCP连接, 建立连接之后, 客户端A中的浏览器进程可以通过Socket访问该TCP连接。
     - 客户端A进程通过该TCP连接向服务端B发送一个http请求报文(ASCII码), 报文中包含(以百度首页为例)
