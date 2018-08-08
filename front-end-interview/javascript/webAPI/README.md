@@ -211,15 +211,22 @@ xhr.send(null)
 
 ### js的各种位置, 比如clientHeight,scrollHeight,offsetHeight ,以及scrollTop, offsetTop,clientTop的区别？
 - clientHeight：表示的是可视区域的高度，不包含border和滚动条
-
-
 - offsetHeight：表示可视区域的高度，包含了border和滚动条
-
-
 - scrollHeight：表示了所有区域的高度，包含了因为滚动被隐藏的部分。
-
-
 - clientTop：表示边框border的厚度，在未指定的情况下一般为0
-
-
 - scrollTop：滚动后被隐藏的高度，获取对象相对于由offsetParent属性指定的父坐标(css定位的元素或body元素)距离顶端的高度。
+
+### BFC（块级格式化上下文，用于清楚浮动，防止margin重叠等）
+直译成：块级格式化上下文，是一个独立的渲染区域，并且有一定的布局规则。
+
+- BFC区域不会与float box重叠
+- BFC是页面上的一个独立容器，子元素不会影响到外面
+- 计算BFC的高度时，浮动元素也会参与计算
+
+那些元素会生成BFC：
+
+- 根元素
+- float不为none的元素
+- position为fixed和absolute的元素
+- display为inline-block、table-cell、table-caption，flex，inline-flex的元素
+- overflow不为visible的元素
