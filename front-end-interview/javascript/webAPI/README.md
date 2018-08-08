@@ -205,3 +205,21 @@ xhr.send(null)
     - localStorage一直都在
     - sessionStorage浏览器关闭即消失                     
    
+### mouseover和mouseenter的区别
+- mouseover：当鼠标移入元素或其子元素都会触发事件，所以有一个重复触发，冒泡的过程。对应的移除事件是mouseout
+- mouseenter：当鼠标移入元素本身（不包含元素的子元素）会触发事件，也就是不会冒泡，对应的移除事件是mouseleave
+
+### js的各种位置, 比如clientHeight,scrollHeight,offsetHeight ,以及scrollTop, offsetTop,clientTop的区别？
+- clientHeight：表示的是可视区域的高度，不包含border和滚动条
+
+
+- offsetHeight：表示可视区域的高度，包含了border和滚动条
+
+
+- scrollHeight：表示了所有区域的高度，包含了因为滚动被隐藏的部分。
+
+
+- clientTop：表示边框border的厚度，在未指定的情况下一般为0
+
+
+- scrollTop：滚动后被隐藏的高度，获取对象相对于由offsetParent属性指定的父坐标(css定位的元素或body元素)距离顶端的高度。
