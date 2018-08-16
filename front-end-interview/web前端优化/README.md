@@ -199,3 +199,24 @@ timer = setInterval(function(){
 </html>
 
 ```
+
+### 减少DNS查询
+
+用户输入URL以后，浏览器首先要查询域名（hostname）对应服务器的IP地址，一般需要耗费20-120毫秒时间。DNS查询完成之前，浏览器无法从服务器下载任何数据。
+基于性能考虑，ISP、局域网、操作系统、浏览器都会有相应的DNS缓存机制。
+
+IE缓存30分钟，可以通过注册表中DnsCacheTimeout项设置；
+Firefox缓存1分钟，通过network.dnsCacheExpiration配置；
+
+另外减少不同的主机名可减少DNS查找，减少不同主机名的数量同时也减少了页面能够并行下载的组件数量，避免DNS查找削减了响应时间，而减少并行下载数量却增加了响应时间。原则是把组件分散在2到4个主机名下，这是同时减少DNS查找和允许高并发下载的折中方案。
+
+### 避免重定向
+HTTP重定向通过301/302状态码实现。下面是一个有301状态码的HTTP头
+ HTTP/1.1 301 Moved Permanently 
+ Location: http://example.com/newuri
+ Content-Type: text/html
+复制代码浏览器会自动跳转到Location域指明的URL。重定向需要的所有信息都在HTTP头部，而响应体一般是空的。其实额外的HTTP头，比如Expires和Cache-Control也表示重定向。除此之外还有别的跳转方式：refresh元标签和JavaScript，但如果你必须得做重定向，最好用标准的3xxHTTP状态码，主要是为了让返回按钮能正常使用。
+客户端收到服务器的重定向响应后，会根据响应头中Location的地址再次发送请求。重定向会影响用户体验，尤其是多次重定向时，用户在一段时间内看不到任何内容，只看到浏览器进度条一直在刷新。
+
+最浪费的重定向经常发生、而且很容易被忽略：URL 末尾应该添加/但未添加。比如，访问http://astrology.yahoo.com/astrology将被301重定向到 http://astrology.yahoo.com/astrology/（注意末尾的 /）。如果使用 Apache，可以通过Alias或mod_rewrite或DirectorySlash解决这个问题。
+网站域名变更：CNAME结合Alias或mod_rewrite或者其他服务器类似功能实现跳转。
