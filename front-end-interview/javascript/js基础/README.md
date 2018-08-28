@@ -394,3 +394,12 @@ function formateDate(dt){
   - filter 过滤符合条件的元素
 - 对象API
   - for...in...
+
+
+### js 如何判断Array
+- instance of
+- Obeject.toString.call()
+- isArray()
+- construct()
+- Object.getPrototypeOf()
+- Array.isPrototypeOf()
