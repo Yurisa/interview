@@ -230,3 +230,38 @@ xhr.send(null)
 - position为fixed和absolute的元素
 - display为inline-block、table-cell、table-caption，flex，inline-flex的元素
 - overflow不为visible的元素
+
+### QuerySelector/QuerySelectorAll和getElementById/getElementsByClassName的区别
+- 灵活性
+  - QS/QSA 均支持CSS的选择器，也就是说你可以这么写：
+```
+querySelector('div img .test')
+//找到div下面的img下面类名为test的元素
+```
+  - 结论
+    - 1.QS/QSA相较于GEBI/GEBC更加灵活和方便
+    - 2.QS/QSA对于CSS伪类选择器不生效
+- 动态性
+  - 接下来我们来讨论QSA与GEBC最大的区别动态性。
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        a = document.querySelectorAll('img')
+        b = document.getElementsByTagName('img')
+        document.body.appendChild(new Image())
+        console.log(a.length) // 0
+        console.log(b.length) // 1
+    </script>
+</body>
+</html>
+```
+   - 结论
+     - 通过QSA选择的不受后来DOM变化的影响，但是通过GEBC会受DOM的影响。
