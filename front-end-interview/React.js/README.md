@@ -1,4 +1,12 @@
 ## React.js
+### React介绍
+- Facebook开源的一个Javascript库
+- React结合生态库构成一个MV*框架
+- React特点
+  - Declarative(声明式编码)
+  - Component-Based(组件化编码)
+  - 高效-高效的DOM Diff算法 最小化页面重绘
+  - 单向数据流
 ### 说一下对组件化的理解
     - 组件的封装
       - 视图
