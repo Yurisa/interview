@@ -7,6 +7,40 @@
   - Component-Based(组件化编码)
   - 高效-高效的DOM Diff算法 最小化页面重绘
   - 单向数据流
+### React脚手架
+- 如何安装和使用React脚手架
+```
+npm install -g create-react-app
+create-react-app my-app
+
+cd my-app
+npm start
+```
+- 什么是Yarn
+  - Yarn是新一代包管理工具
+- 为什么使用Yarn
+  - 速度快
+  - 安装版本统一、更安全
+  - 更简洁的输出
+  - 更好的语义化
+- 如何使用Yarn
+  - yarn init
+  - yarn add
+  - yarn remove
+  - yarn/yarn install
+### React生命周期
+- React生命周期包含哪些
+  - getDefaultProps
+  - getInitialState
+  - componentWillMount
+  - render
+  - componentDidMount
+  - componentWillReceiveProps
+  - shouldComponentUpdate
+  - componentWillUpdate
+  - componentDidUpdate
+  - componentWillUnmount
+![img icon](./image/lifecycle.png)
 ### 说一下对组件化的理解
     - 组件的封装
       - 视图
