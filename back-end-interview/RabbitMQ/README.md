@@ -5,3 +5,5 @@
 - 集群模式丰富, 表达式配置, HA模式, 镜像队列模型
 - 保证数据不丢失的前提做到高可靠性、可用性
 - AMQP全称: Advanced Message Queuing Protocol (高级消息队列协议)
+### AMQP协议
+![img icon](./image/AMQP.png)
