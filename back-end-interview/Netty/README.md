@@ -36,3 +36,13 @@
 - 单线程模型: 所有的IO操作都由同一个NIO线程处理的 client---> Reactor单线程 ---> Channel
 - 多线程模型: 由一组NIO线程处理IO操作 client---> Reactor单线程 ---> Reactor线程池 ---> Channel
 - 主从线程模型: 一组线程池接收请求, 一组线程池处理请求 client---> 主线程池 ---> 从线程池 ---> Channel
+
+### 构建netty服务器
+- 构建一对主从线程组
+- 定义服务器启动类
+- 为服务器设置Channel
+- 设置处理从线程池的助手类初始化器
+- 监听启动和关闭服务器
+
+### 设置channel初始化器
+- 每一个channel由多个handler共同组成管道(pipeline)
