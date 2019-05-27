@@ -1,4 +1,5 @@
 ## flutter
+文档地址：https://github.com/wkl007/frontend-notes/tree/master/Flutter/docs
 ### 检查开发环境
 ```
 flutter doctor
@@ -64,9 +65,26 @@ flutter doctor
   outgoing为null或者outgoing[a]为null或者containes(b)为null都会使得表达式为null
   ** 技巧：获取一个对象中的长度：searchModel ?. data ?. length ?? 0
 - Functions
+  Dart和JavaScript函数类似。主要区别是声明：
+  ```
+  // JavaScript ES5
+  function fn() {
+    return true
+  }
+  // Dart
+  fn() {
+    return true
+  }
+  // can alse written by as
+  bool fn() {
+    return true
+  }
+  ```
 - 异步编程
   - Futures
+  dart返回future
   - async和await
+  await后返回future
 ### 什么是声明式UI
 ### 项目结构、资源、依赖和本地化
 ### 认识视图(Views)
